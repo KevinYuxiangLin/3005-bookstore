@@ -15,11 +15,11 @@ Project can be ran through Visual Studio.
 # Key Files
 The following files contain most of :meat_on_bone:MEAT:meat_on_bone: of the project. They are well commented throughout. 
 
-Front end:
+- Front end:
 Views>Home>Index.cshtml
-Back end:
+- Back end:
 Scripts>book_store.js
-Controller:
+- Controller:
 Controllers>HomeController.cs
-Data Access:
+- Data Access:
 Data>BookStoreDataAccess.cs
