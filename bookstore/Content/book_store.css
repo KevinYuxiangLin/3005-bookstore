@@ -1,0 +1,159 @@
+﻿body {
+}
+
+.nav_items {
+    cursor: pointer;
+}
+
+.bookstore_title {
+    margin-right: 500px;
+    padding-left: 50px;
+}
+/*
+    pane divider
+*/
+body, html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    background-color: #e5e5e5;
+    font: arial;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+}
+
+.leftpane {
+    width: 25%;
+    height: 100%;
+    float: left;
+    border-collapse: collapse;
+    border-right: 1px solid grey;
+}
+
+.middlepane {
+    width: 60%;
+    height: 100%;
+    float: left;
+    border-collapse: collapse;
+    /*border: 1px solid grey;*/
+}
+
+.rightpane {
+    width: 15%;
+    height: 100%;
+    position: relative;
+    float: right;
+    border-collapse: collapse;
+    /*border: 1px solid grey;*/
+}
+
+.toppane {
+    width: 100%;
+    height: 100px;
+    border-collapse: collapse;
+    border-bottom: 1px solid grey;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password], input[type=email] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+button {
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    /*width: 100%;*/
+}
+
+    button:hover {
+        opacity: 0.8;
+    }
+
+/* Center the image and position the close button */
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+    position: relative;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 40%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+.close {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+    .close:hover,
+    .close:focus {
+        color: red;
+        cursor: pointer;
+    }
+
+.book-list-item {
+    list-style: none;
+    cursor: pointer;
+}
+    .book-list-item:hover{
+        color: darkblue;
+    }
+
+.search-dropdown {
+    display: inline-block;
+    width: 100px;
+    border-radius: 2px;
+}
+
+th, td {
+    text-align: left;
+    padding: 16px;
+}
+
+.cart-item {
+    cursor: pointer;
+}
+    .book-list-item:hover {
+        color: darkblue;
+    }

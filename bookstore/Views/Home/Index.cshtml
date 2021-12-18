@@ -1,0 +1,420 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container">
+    <div class="toppane">
+        <div id="owner-menu" style="display: none">
+            <button type="submit" id="btn-add-book">Add Book</button>
+            <button type="submit" id="btn-order-status">View Order Status</button>
+            @*<button type="submit" id="btn-respond-inquiry">Respond to Inquiry</button>*@
+            <button type="submit" id="btn-view-restock">View Restock Report</button>
+            <button type="submit" id="btn-view-summary">View Summary</button>
+            <button type="submit" id="btn-view-catagory">View Summary Catagory</button>
+
+        </div>
+        <div id="customer-menu" style="display: none">
+            @* <button type="submit" id="btn-send-inquiry">Send Inquiry</button>*@
+            <button type="submit" id="btn-view-order">View Order</button>
+            @*<button type="submit" id="btn-cart">Shopping Cart</button>*@
+        </div>
+    </div>
+    <div class="leftpane">
+        Search<br /><br /><br />
+        <label><b>Category:</b></label>
+        <select id="category-selection" class="search-dropdown">
+        </select>
+        <br />
+        <label><b>Author:</b></label>
+        <select id="author-selection" class="search-dropdown">
+        </select>
+        <br />
+        <label><b>Publisher:</b></label>
+        <select id="publisher-selection" class="search-dropdown">
+        </select>
+        <br />
+        <label><b>Publish Year:</b></label>
+        <select id="year-selection" class="search-dropdown">
+        </select>
+        <br />
+        <label><b>Book name:</b></label>
+        <input type="text" id="search-title">
+        <br />
+        <label><b>ISBN:</b></label>
+        <input type="text" id="search-ISBN">
+        <br />
+        <button type="submit" id="btn-search">Search</button>
+    </div>
+    <div class="middlepane">
+        Book list:<br />
+        <ul id="booklist">
+        </ul>
+    </div>
+    <div class="rightpane">right pane for future use</div>
+</div>
+
+@* This is the login screen *@
+<div id="login" class="modal">
+    <div class="modal-content">
+
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('login').style.display='none'" class="close" title="Close Modal">&times;</span>
+
+        </div>
+
+        <div class="container">
+            <label for="uname"><b>Username</b></label>
+            <input type="text" id="input-login-user" placeholder="Enter Username" name="uname" required>
+            <br />
+            <label for="psw"><b>Password</b></label>
+            <input type="password" id="input-login-pwd" placeholder="Enter Password" name="psw" required>
+            <br />
+            <button type="submit" id="btn-login">Login</button>
+            <br />
+        </div>
+    </div>
+</div>
+
+@* This is the sign up screen *@
+<div id="signup" class="modal">
+    <div class="modal-content">
+
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('signup').style.display='none'" class="close" title="Close Modal">&times;</span>
+        </div>
+
+        <div class="container">
+            <label for="uname">Login Name</label>
+            <input type="text" id="input-sign-user" placeholder="Enter Username" name="uname" required>
+            <br />
+            <label for="psw">Password</label>
+            <input type="password" id="input-sign-pwd" placeholder="Enter Password" name="psw" required>
+            <br />
+            <label>Email: </label><input type="email" id="email-input" placeholder="" />
+            <br />
+            <label>Phone Number: </label><input type="text" id="phone-input" />
+            <br />
+            <label>Full name: </label><input type="text" id="fullname-input" />
+            <br />
+            <label> Home address-</label>
+            <br />
+            <label>Street: </label>
+            <input type="text" id="str-input" />
+            <br />
+            <label>City: </label><input type="text" id="city-input" />
+            <br />
+            <label>Province: </label><input type="text" id="prov-input" />
+            <br />
+            <label>Postcode: </label><input type="text" id="postcode-input" />
+            <br />
+            <label>Country: </label><input type="text" id="country-input" />
+            <br />
+            <button type="submit" id="btn-signup">Sign up</button>
+        </div>
+
+    </div>
+</div>
+
+@* This is the check out screen *@
+<div id="checkout" class="modal">
+    <div class="modal-content">
+
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('checkout').style.display='none'" class="close" title="Close Modal">&times;</span>
+        </div>
+
+        <div class="container">
+            <label> Shipping Address: (Leave blank if you want you use your default address)-</label>
+            <br />
+            <label>Street: </label>
+            <input type="text" id="str-checkout" />
+            <br />
+            <label>City: </label><input type="text" id="city-checkout" />
+            <br />
+            <label>Province: </label><input type="text" id="prov-checkout" />
+            <br />
+            <label>Postcode: </label><input type="text" id="postcode-checkout" />
+            <br />
+            <label>Country: </label><input type="text" id="country-checkout" />
+            <br />
+            <button type="submit" id="btn-submit">Submit</button>
+        </div>
+
+    </div>
+</div>
+
+@* This is the shopping cart screen *@
+<div id="cart" class="modal">
+    <div class="modal-content">
+
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('cart').style.display='none'" class="close" id="cart-close" title="Close Modal">&times;</span>
+        </div>
+
+        <div class="container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Book Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                    </tr>
+                </thead>
+                <tbody id="cart-table-content">
+                    @*<tr>
+                            <td class="cart-item" onclick="SelectCartItem()">Jill</td>
+                            <td value="Smith">Smith</td>
+                            <td><a href="#"/>50</td>
+                        </tr>*@
+                </tbody>
+            </table>
+            <label> Subtotal: </label> <input id="cart-subtotal" type="text" readonly />
+            <br />
+            <label> Total Quantity: </label> <input id="cart-quantity" type="text" readonly />
+            <br />
+            <button type="submit" id="btn-checkout">Proceed to Checkout</button>
+        </div>
+    </div>
+</div>
+@* This is the login-signup  reminder screen *@
+<div id="login-sign" class="modal">
+    <div class="modal-content">
+
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('login-sign').style.display='none'" class="close" title="Close Modal">&times;</span>
+        </div>
+
+        <div class="container">
+
+            <button type="submit" id="btn-to-login">Login</button>
+            <button type="submit" id="btn-to-signup">Sign Up</button>
+        </div>
+    </div>
+</div>
+@* This is the order screen *@
+<div id="order" class="modal">
+    <div class="modal-content">
+
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('order').style.display='none'" class="close" id="order-close" title="Close Modal">&times;</span>
+        </div>
+
+        <div class="container">
+            <table id="order-table">
+                <thead>
+                    <tr>
+                        <th>Order Id</th>
+                        <th>Total Price</th>
+                        <th>Total Items</th>
+                        <th>Order Status</th>
+                        <th>Order Date</th>
+                    </tr>
+                </thead>
+                <tbody id="order-tablecontent">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@* This is the order status screen *@
+<div id="orderstatus" class="modal">
+    <div class="modal-content">
+
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('orderstatus').style.display='none'" class="close" title="Close Modal">&times;</span>
+        </div>
+
+        <div class="container">
+            <label>Order ID: </label><input type="text" id="order-id" readonly />
+            <br />
+            <label>Order Status: </label>
+            <select id="status-selection" class="search-dropdown">
+                <option>order received</option>
+                <option>order processing</option>
+                <option>order shipped</option>
+            </select>
+            <br />
+
+        </div>
+    </div>
+</div>
+
+@* This is order detail screen for users (able to see past order details) *@
+<div id="orderdetail" class="modal">
+    <div class="modal-content">
+
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('orderdetail').style.display='none'" class="close" id="orderdetail-close" title="Close Modal">&times;</span>
+        </div>
+
+        <div class="container">
+            <table id="order-detail-table">
+                <thead>
+                    <tr>
+                        <th>Book Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                    </tr>
+                </thead>
+                <tbody id="order-detail-tablecontent">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@* This is restock history screen. Details about restocking *@
+<div id="restock" class="modal">
+    <div class="modal-content">
+
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('restock').style.display='none'" class="close" id="restock-close" title="Close Modal">&times;</span>
+        </div>
+
+        <div class="container">
+            <table id="restock-table">
+                <thead>
+                    <tr>
+                        <th>Book Name</th>
+                        <th>Publisher</th>
+                        <th>Quantity Restocked</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody id="restock-tablecontent">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@* This is summary screen for owners (able to see sumamry results of sales and other stats) *@
+<div id="summary" class="modal">
+    <div class="modal-content">
+
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('summary').style.display='none'" class="close" id="summary-close" title="Close Modal">&times;</span>
+        </div>
+
+        <div class="container">
+            <table id="summary-table">
+                <thead>
+                    <tr>
+                        <th>Month</th>
+                        <th>Total Sales</th>
+                        <th>Total Expenditures</th>
+                        <th>Total Sales Quantity</th>
+                    </tr>
+                </thead>
+                <tbody id="summary-tablecontent">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@* This is summary catagory screen for owners (able to see summary results with filters) *@
+<div id="summary-catagory" class="modal">
+    <div class="modal-content">
+
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('summary-catagory').style.display='none'" class="close" id="summary-catagory-close" title="Close Modal">&times;</span>
+        </div>
+
+        <div class="container">
+            <label><b>Month:</b></label>
+            <select id="month-selection" class="search-dropdown">
+            </select>
+            <br />
+            <label><b>Category:</b></label>
+            <select id="catSum-selection" class="search-dropdown">
+            </select>
+            <br />
+            <table id="summary-catagory-table">
+                <thead>
+                    <tr>
+                        <th>Month</th>
+                        <th>Category</th>
+                        <th>Total Sales</th>
+                        <th>Total Sales Quantity</th>
+                    </tr>
+                </thead>
+                <tbody id="summary-catagory-tablecontent">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+@* This is the book detail screen *@
+<div id="bookdetail" class="modal">
+    <div class="modal-content">
+
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('bookdetail').style.display='none'" class="close" title="Close Modal">&times;</span>
+        </div>
+
+        <div class="container">
+            <label>Book name: </label><input type="text" id="detail-title" readonly />
+            <br />
+            <label>Author: </label><input type="text" id="detail-author" readonly />
+            <br />
+            <label>Publisher: </label><input type="text" id="detail-publisher" readonly />
+            <br />
+            <label>Pages: </label><input type="text" id="detail-pages" readonly />
+            <br />
+            <label>ISBN: </label><input type="text" id="detail-isbn" readonly />
+            <br />
+            <label>Price: </label><input type="text" id="detail-price" readonly />
+            <br />
+            <label>Publish Year: </label><input type="text" id="detail-year" readonly />
+            <br />
+            <label>Category: </label><input type="text" id="detail-category" readonly />
+            <br />
+            <label>Stock: </label><input type="text" id="detail-stock" readonly style="display: none" />
+            <br />
+            <label>Percentage to Publisher: </label><input type="text" id="detail-percent" readonly style="display: none" />
+            <br />
+
+            <button type="submit" id="btn-add-to-cart">Add To Cart</button>
+            <button type="submit" id="btn-rem-from-bookstore" style="display:none">Delete the Book</button>
+            <button type="submit" id="btn-rem-from-cart" style="display:none">Remove from Cart</button>
+        </div>
+    </div>
+</div>
+
+@* This is the add book screen *@
+<div id="addbook" class="modal">
+    <div class="modal-content">
+
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('addbook').style.display='none'" class="close" title="Close Modal">&times;</span>
+        </div>
+
+        <div class="container">
+            <label>Book name: <input type="text" id="add-title" /></label>
+            <br />
+            <label>Author: <input type="text" id="add-author"></label>
+            <br />
+            <label>Publisher: <input type="text" id="add-publisher" /></label>
+            <br />
+            <label>Pages: <input type="text" id="add-pages" /></label>
+            <br />
+            <label>ISBN: <input type="text" id="add-isbn" /></label>
+            <br />
+            <label>Price: <input type="text" id="add-price" /></label>
+            <br />
+            <label>Publish Year: <input type="text" id="add-year" /></label>
+            <br />
+            <label>Category: <input type="text" id="add-category" /></label>
+            <label>Stock: <input type="text" id="add-stock" /></label>
+            <label>Percentage to Publisher: <input type="text" id="add-percent" /></label>
+            <br />
+            <button type="submit" id="btn-add">Add Book</button>
+        </div>
+    </div>
+</div>
+
+
